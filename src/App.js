@@ -19,7 +19,7 @@ export default function NavBar() {
   return (
     <Router>
       <div>
-        <h2 className="customhead">Welcome to Kofoednet.systems</h2>
+        <h2 className="customhead">Welcome to Rene´s fetcher</h2>
         <ul className="header">
           <li>
             <NavLink to="/">Home</NavLink>

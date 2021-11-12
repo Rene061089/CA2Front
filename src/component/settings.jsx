@@ -1,3 +1,3 @@
-const url = "https://kofoednet.systems/CA2BackEnd";
+const url = "https://dataelev.dk/tomcat/CA2Back";
 
 export default url;
