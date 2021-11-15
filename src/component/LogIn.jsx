@@ -2,8 +2,8 @@ import { useState } from "react";
 import facade from "./apiFacade";
 import LoggedIn from "./LoggedIn";
 
-export function LoginUI() {
-  const [loggedIn, setLoggedIn] = useState(false);
+export function LoginUI({loggedIn, setLoggedIn}) {
+  
 
   const logout = () => {
     facade.logout();

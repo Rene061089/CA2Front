@@ -17,6 +17,9 @@ import {
 } from "react-router-dom";
 
 export default function NavBar() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <Router>
       <div>
@@ -28,23 +31,24 @@ export default function NavBar() {
           <li>
             <NavLink to="/Login">Login</NavLink>
           </li>
-
+          {facade.hasUserAccess('user', loggedIn) && 
           <li>
             <NavLink to="/fetchCovid">Fetch covid info</NavLink>
           </li>
-
+          }
+          {facade.hasUserAccess('admin', loggedIn) && 
           <li>
             <NavLink to="/fetchRecipes">Fetch Recipes</NavLink>
-          </li>
+          </li>}
         </ul>
         <hr />
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
 
-            <Route path="/login" element={<LoginUI />} />
+            <Route path="/login" element={<LoginUI  loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
 
-            <Route path="/fetchCovid" element={<Covid />} />
+            <Route path="/fetchCovid" element={<Covid facade={facade}/>} />
 
             <Route path="/fetchRecipes" element={<Recipes />} />
           </Routes>
@@ -54,41 +58,3 @@ export default function NavBar() {
   );
 }
 
-// const FetchCovid = () => {
-//   const [covid, setCovid] = useState([]);
-//     fetch("https://kofoednet.systems/CA2BackEnd/api/fetch/")
-//     .then(HandleHttpErrors)
-//     .then((res) => res.json())
-//     .then((data) => this.setState({ covid: data }))
-//     .catch(ErrorHandling)
-// }
-
-// function MakeOptions(method, body) {
-//   var opts = {
-//     method: method,
-//     headers: {
-//       "Content-type": "application/json",
-//       Accept: "application/json",
-//     },
-//   };
-//   if (body) {
-//     opts.body = JSON.stringify(body);
-//   }
-//   return opts;
-// }
-
-// function HandleHttpErrors(res) {
-//   if (!res.ok) {
-//     return Promise.reject({ status: res.status, fullError: res.json() });
-//   }
-//   return res.json();
-// }
-
-// function ErrorHandling(err) {
-//   console.log(err);
-//   if (err.status) {
-//     err.fullError.then((e) => console.log(e.message));
-//   } else {
-//     console.log("Network error");
-//   }
-// }

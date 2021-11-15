@@ -19,11 +19,11 @@ const FetchRecipes = () => {
   });
 
   useEffect(() => {
-    const test = async () => {
+    const recipesTOShow = async () => {
     const reci = await getRecipesInfo();
     setRecipes(...reci.recipes, recipes)
   }
-  test();
+  recipesTOShow();
   }, []);
 
   const getRecipesInfo = async () => {
@@ -43,8 +43,8 @@ const FetchRecipes = () => {
           </Row>
           <Row>
           <Col sm={4}>
-            <h4 style={{ textAlign: "center" }}> Ingredients: </h4>
-          <Card className="cardstyle"> {recipes.ingredients}</Card>
+          <Card className="cardstyle" style={{marginTop: 19}}> <h4 style={{ textAlign: "center"}}> Ingredients: </h4>
+           {recipes.ingredients}</Card>
           </Col>
           <Col sm={4}>
             {<br></br>}

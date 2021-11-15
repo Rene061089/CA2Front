@@ -32,12 +32,23 @@ const login = (user, password) => {
       .then(res => {setToken(res.token) })
 }
 
-const fetchData = () => {
+const fetchData = (endpoint, updateAction, SetErrorMessage) => {
     const options = makeOptions("GET",true); //True add's the token
-    return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
-
+    return fetch(URL + "/api/" + endpoint, options)
+    .then(handleHttpErrors)
+    .then((data) => updateAction(data))
+  //   .catch(err =>
+  //   {
+  //     if (err.status)
+  //     {
+  //         console.log(err)
+  //         err.fullError.then(e => SetErrorMessage(e.code + ": " + e.message))
+  //     }
+  //     else { SetErrorMessage("Network error"); }
+  // })
 
  }
+ 
 const makeOptions= (method,addToken,body) =>{
    var opts = {
      method: method,

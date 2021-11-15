@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Card, Table } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import facade from '../component/apiFacade'
 
-import URL from "./settings";
+// import URL from "./settings";
 
 const FetchCovid = () => {
   const [covid, setCovid] = useState([
@@ -16,12 +17,17 @@ const FetchCovid = () => {
   ]);
 
   useEffect(() => {
-    getCovidInfo();
+    // const covidToShow = async () =>{
+      // const covidFromServer = await getCovidInfo();
+      // setCovid(...covidFromServer.covid, covid)   
+    // }
+    // covidToShow();
+    facade.fetchData('fetch', getCovidInfo )
   }, []);
 
-  const getCovidInfo = async () => {
-    const res = await fetch(URL + "/api/fetch");
-    const data = await res.json();
+  const getCovidInfo = async (data) => {
+    // const res = await fetch(URL + "/api/fetch");
+    // const data = await res.json();
     setCovid(...data.covid, covid);
   };
 

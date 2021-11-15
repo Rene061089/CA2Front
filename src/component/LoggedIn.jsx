@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 
 function LoggedIn({facade}) {
-    const [dataFromServer, setDataFromServer] = useState("Loading...")
+    // const [dataFromServer, setDataFromServer] = useState("Loading...")
     
-    useEffect(() => {
-        facade.fetchData().then(data=> setDataFromServer(data.msg));
-    }, [facade])
+    // useEffect(() => {
+    //     facade.fetchData('info/admin').then(data=> setDataFromServer(data.msg));
+    // }, [facade])
    
     return (
       <div>
-        <h2>Data Received from server</h2>
-        <h3>{dataFromServer}</h3>
+        <h2>Velkommen brug navbaren til at se dine muligheder </h2>
+        {/* <h3>{dataFromServer}</h3> */}
       </div>
     )
    
