@@ -17,7 +17,6 @@ import {
 } from "react-router-dom";
 
 export default function NavBar() {
-
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
@@ -31,24 +30,31 @@ export default function NavBar() {
           <li>
             <NavLink to="/Login">Login</NavLink>
           </li>
-          {facade.hasUserAccess('user', loggedIn) && 
-          <li>
-            <NavLink to="/fetchCovid">Fetch covid info</NavLink>
-          </li>
-          }
-          {facade.hasUserAccess('admin', loggedIn) && 
-          <li>
-            <NavLink to="/fetchRecipes">Fetch Recipes</NavLink>
-          </li>}
+          {facade.hasUserAccess("user", loggedIn) && (
+            <li>
+              <NavLink to="/fetchCovid">Fetch covid info</NavLink>
+            </li>
+          )}
+          {facade.hasUserAccess("admin", loggedIn) && (
+            <li>
+              <NavLink to="/fetchRecipes">Fetch Recipes</NavLink>
+            </li>
+          )}
         </ul>
         <hr />
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
 
-            <Route path="/login" element={<LoginUI  loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+            <Route
+              className="LoginBackground"
+              path="/login"
+              element={
+                <LoginUI loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+              }
+            />
 
-            <Route path="/fetchCovid" element={<Covid facade={facade}/>} />
+            <Route path="/fetchCovid" element={<Covid facade={facade} />} />
 
             <Route path="/fetchRecipes" element={<Recipes />} />
           </Routes>
@@ -57,4 +63,3 @@ export default function NavBar() {
     </Router>
   );
 }
-

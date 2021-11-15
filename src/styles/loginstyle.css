@@ -1,0 +1,26 @@
+.LoginBackground {
+  background-color: cadetblue;
+  height: 750px;
+  text-align: center;
+}
+
+.button {
+  size: 10cm;
+  width: 150px;
+  height: 30px;
+  background-color: rgb(88, 173, 2);
+}
+
+.input1 {
+  margin-bottom: 10px;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+}
+
+.input2 {
+  margin-bottom: 10px;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+}
