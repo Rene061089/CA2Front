@@ -54,6 +54,25 @@ const makeOptions= (method,addToken,body) =>{
    }
    return opts;
  }
+
+ const getUserRoles = () =>
+ {
+     const token = getToken()
+     if (token != null)
+     {
+         const payloadBase64 = getToken().split('.')[1]
+         const decodedClaims = JSON.parse(window.atob(payloadBase64))
+         const roles = decodedClaims.roles
+         return roles
+     } else return ""
+ }
+
+ const hasUserAccess = (neededRole, loggedIn) =>
+    {
+        const roles = getUserRoles().split(',')
+        return loggedIn && roles.includes(neededRole)
+    }
+
  return {
      makeOptions,
      setToken,
@@ -61,7 +80,9 @@ const makeOptions= (method,addToken,body) =>{
      loggedIn,
      login,
      logout,
-     fetchData
+     fetchData,
+     getUserRoles,
+     hasUserAccess,
  }
 }
 const facade = apiFacade();

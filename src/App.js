@@ -2,11 +2,12 @@ import "./styles/style2.css";
 import "./styles/customHead.css";
 import "./styles/logincss.css";
 import Home from "./component/Home";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { LoginUI } from "./component/LogIn";
 import Covid from "./component/Covid";
-import Recipes from "./component/Recipes"
-
+import Recipes from "./component/Recipes";
+import facade from "./component/apiFacade";
+import { useState } from "react";
 
 import {
   BrowserRouter as Router,
@@ -27,9 +28,11 @@ export default function NavBar() {
           <li>
             <NavLink to="/Login">Login</NavLink>
           </li>
+
           <li>
             <NavLink to="/fetchCovid">Fetch covid info</NavLink>
           </li>
+
           <li>
             <NavLink to="/fetchRecipes">Fetch Recipes</NavLink>
           </li>
@@ -38,8 +41,11 @@ export default function NavBar() {
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/login" element={<LoginUI />} />
+
             <Route path="/fetchCovid" element={<Covid />} />
+
             <Route path="/fetchRecipes" element={<Recipes />} />
           </Routes>
         </div>

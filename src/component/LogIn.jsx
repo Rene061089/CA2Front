@@ -17,7 +17,7 @@ export function LoginUI() {
   return (
     <div>
       {!loggedIn ? (
-        <LogIn login={login} />
+        <LogIn login={login}/>
       ) : (
         <div>
           <LoggedIn facade={facade} />
